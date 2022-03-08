@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'posts.apps.PostsConfig',
     'api.apps.ApiConfig',
     'rest_framework',
-    'rest_framework.authtoken',        
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -127,7 +127,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', 
+        'rest_framework.permissions.IsAuthenticated',
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
