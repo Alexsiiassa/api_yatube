@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
-from posts.models import Group, Post
+from posts.models import Post, Group
 from rest_framework import status, viewsets
 from rest_framework.response import Response
 
@@ -22,9 +22,7 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         if self.request.user != instance.author:
             raise PermissionDenied()
-        instance.delete()
-        return
-    Response(status=status.HTTP_204_NO_CONTENT)
+        super().perform_destroy(instance)
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
@@ -52,5 +50,5 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_destroy(self, instance):
         if self.request.user != instance.author:
             raise PermissionDenied()
-        instance.delete()
+        super().perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)

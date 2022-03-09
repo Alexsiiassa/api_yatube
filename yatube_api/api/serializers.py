@@ -1,4 +1,4 @@
-from posts.models import Comment, Group, Post
+from posts.models import Post, Group, Comment
 from rest_framework import serializers
 
 
